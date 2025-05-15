@@ -1,0 +1,28 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/2023-05-04-generating-examples-of-maximal-room-squares-in-r/index.html",
+      "/posts/2014-10-17-euler-paths/index.html",
+      "/posts/2014-09-26-greedy-edge-colouring-of-small-graphs/index.html",
+      "/posts/2014-09-12-more-on-moore-graphs/index.html",
+      "/posts/2014-08-29-chromatic-indices-of-small-graphs/index.html",
+      "/posts/2014-08-22-small-moore-graphs/index.html",
+      "/posts/2014-08-15-colouring-small-regular-graphs/index.html",
+      "/posts/2014-08-08-colouring-small-graphs-update/index.html",
+      "/posts/2014-07-25-colouring-small-graphs/index.html",
+      "/posts/2014-07-18-a-chromatic-number-program/index.html",
+      "/posts/2014-07-11-chromatic-polynomials/index.html",
+      "/posts/2014-07-04-vertex-colouring-by-recursive-removal-of-independent-sets-of-vertices/index.html",
+      "/posts/2014-06-27-improved-greedy-colouring-of-small-graphs/index.html",
+      "/posts/2014-06-20-strategies-for-greedy-vertex-colouring/index.html",
+      "/posts/2014-06-13-greedy-vertex-colouring/index.html",
+      "/posts/2014-06-06-processing-graph-streams/index.html",
+      "/posts/2014-05-30-drawing-coloured-queen-graphs/index.html",
+      "/posts/2014-05-23-introduction-to-greedy-colouring/index.html",
+      "/posts/2014-05-09-lombardi-drawings/index.html",
+      "/posts/2014-05-02-basic-graph-drawing/index.html",
+      "/posts/2014-04-25-plane-drawings-of-lobsters/index.html"
+    ]
+  }
+]

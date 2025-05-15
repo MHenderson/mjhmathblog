@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew Henderson">
+<meta name="dcterms.date" content="2014-08-22">
+
+<title>Small Moore Graphs – mjhmathblog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dde8d7229bfee0f8bb5efd37f0f9ae1e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">mjhmathblog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MHenderson"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Small Moore Graphs</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">graph-theory</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Matthew Henderson </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 22, 2014</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>With <code>geng</code> we can generate graphs in <em>graph6</em> format. For example, to generate all connected simple graphs of order four:</p>
+<pre><code>$ geng -qc 4
+CF
+CU
+CV
+C]
+C^
+C~</code></pre>
+<p>Here, the <code>-q</code> switch suppresses some auxilliary output and <code>-c</code> specifies connected graphs.</p>
+<p>We can specify a class of graphs having certain properties, such as size, degree bounds, existence of cycles, connectedness or bipartiteness. For example, to generate all connected, bipartite graphs of order four with maximum degree two:</p>
+<pre><code>$ geng -qcb -D2 4
+CU
+C]</code></pre>
+<p>We can visualise these graphs using <code>listg</code> to convert the output to <em>DOT</em> format and the using one of the <em>Graphviz</em> programs to draw them. If we have many options to pass to the drawing program it makes sense to pack them all into a variable for future use.</p>
+<pre><code>$ options="-Nfixedsize=true\
+           -Nlabel=\
+           -Nshape=circle\
+           -Nheight=0.2\
+           -Nwidth=0.2\
+           -Nstyle=filled\
+           -Nfillcolor=black"
+
+$ geng -qcb -D2 4\
+  | listg -y\
+  | circo -Tsvg -O $options</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/1.svg" class="img-fluid figure-img"></p>
+<figcaption>P4</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/2.svg" class="img-fluid figure-img"></p>
+<figcaption>C4</figcaption>
+</figure>
+</div>
+<p>These two graphs answer a very easy conjecture about the existence of graphs having the following properties:</p>
+<ul>
+<li>four vertices,</li>
+<li>maximum degree two,</li>
+<li>connected,</li>
+<li>bipartite.</li>
+</ul>
+<p>Many problems in graph theory can be expressed as the existence of graphs satisfying a list of properties like this. The existence of Moore graphs, for example, is a problem yet to be completely resolved which takes this simple form. So it might be nice to have a little program <code>moore</code>, that filters Moore graphs from the output of <code>geng</code>.</p>
+<p>Then if we should wish, for example, to draw all Moore graphs on five vertices we can modify the above pipeline accordingly:</p>
+<pre><code>$ echo `geng -qc 5`
+  | moore
+  | listg -y
+  | circo -Tsvg -O $options</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/3.svg" class="img-fluid figure-img"></p>
+<figcaption>K5</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/4.svg" class="img-fluid figure-img"></p>
+<figcaption>C5</figcaption>
+</figure>
+</div>
+<p>In this post we show how to program such a filter in Bash and Maxima, albeit one which is fatally flawed.</p>
+<section id="moore-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="moore-graphs">Moore Graphs</h2>
+<p>A <em>Moore graph</em> is a graph with diameter <span class="math inline">\(d\)</span> and maximum degree <span class="math inline">\(k\)</span> which has the maximum number of vertices for a graph with the same diameter and maximum degree.</p>
+<p>In <span class="citation" data-cites="cameronCombinatoricsTopicsTechniques1994">Cameron (<a href="#ref-cameronCombinatoricsTopicsTechniques1994" role="doc-biblioref">1994</a>)</span> it is shown that a Moore graph is any graph satisfying the following conditions (any two of which imply the third):</p>
+<ul>
+<li><span class="math inline">\(G\)</span> is connected with maximum degree <span class="math inline">\(k\)</span> and diameter <span class="math inline">\(d\)</span>;</li>
+<li><span class="math inline">\(G\)</span> has minimum degree <span class="math inline">\(k\)</span> and girth <span class="math inline">\(2d + 1\)</span>;</li>
+<li><span class="math inline">\(G\)</span> has <span class="math inline">\(1 + k\frac{(k - 1)^{d} - 1}{k - 2}\)</span> vertices.</li>
+</ul>
+<p>If the output from the pipeline at the end of the previous section is correct then there are only two Moore graphs of order five, <span class="math inline">\(K_{5}\)</span> and <span class="math inline">\(C_{5}\)</span>.</p>
+<ul>
+<li><p><span class="math inline">\(d = 1\)</span>. <span class="math inline">\(K_{n}\)</span> and <span class="math inline">\(C_{3}\)</span> are the only Moore graphs.</p></li>
+<li><p><span class="math inline">\(d = 2\)</span>. The Hoffman-Singleton theorem says that a Moore graph must have <span class="math inline">\(k \in \{2, 3, 7, 57\}\)</span>.</p>
+<ul>
+<li><span class="math inline">\(k = 2\)</span> the unique Moore graph is <span class="math inline">\(C_{5}\)</span>.</li>
+<li><span class="math inline">\(k = 3\)</span> the unique Moore graph is the Petersen graph.</li>
+<li><span class="math inline">\(k = 7\)</span> the unique Moore graph is the Hoffman-Singleton graph (shown below).</li>
+<li><span class="math inline">\(k = 57\)</span> unknown whether there exists a hypothetical Moore graph which would necessarily have girth 5 and order 3250.</li>
+</ul></li>
+<li><p><span class="math inline">\(d \geq 3\)</span>. According to <span class="citation" data-cites="damerellMooreGraphs1973">Damerell (<a href="#ref-damerellMooreGraphs1973" role="doc-biblioref">1973</a>)</span> and <span class="citation" data-cites="bannaiFiniteMooreGraphs1973">Bannai and Ito (<a href="#ref-bannaiFiniteMooreGraphs1973" role="doc-biblioref">1973</a>)</span> the only Moore graphs is <span class="math inline">\(C_{2d + 1}\)</span>.</p></li>
+</ul>
+<p>To draw the Hoffmann-Singleton graph:</p>
+<pre><code>$ curl http://staffhome.ecm.uwa.edu.au/~00013890/remote/cages/cagesk7g05.s6\
+  | listg -y\
+  | circo -Tsvg -O $options</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/hoffman-singleton.svg" class="img-fluid figure-img"></p>
+<figcaption>Hoffmann-Singleton Graph</figcaption>
+</figure>
+</div>
+</section>
+<section id="processing-graph-data-with-maxima" class="level2">
+<h2 class="anchored" data-anchor-id="processing-graph-data-with-maxima">Processing Graph Data with Maxima</h2>
+<p>The three conditions in the previous section form the basis of the Moore graph filter below. By itself we can’t use <em>geng</em> to identify Moore graphs because any two of these conditions involve computing either the girth or diameter.</p>
+<p>Maxima, the computer algebra system, has a graphs library which includes functions that compute the girth and diameter of graphs. Even better, it also provides conversion to and from <em>graph6</em> format.</p>
+<p>Because the program we are going to write is supposed to work within a pipeline we will use Maxima in batch mode, rather than interactively. To avoid working with multiple source files we will use the <code>--batch-string</code> option to pass a program to Maxima as a string.</p>
+<p>One drawback with Maxima is that there is a little bit of processing to be done one the output of any program because, even running in batch mode with minimal verbosity, Maxima still outputs a lot of extraneous text.</p>
+<p>As the basic structure of the program is relatively complicated we will begin with an example. This example also serves to highlight an important consideration when it comes to the speed of the program.</p>
+<p>In the listing below is a Bash program that calculates the degree of every graph in an input string of whitespace-delimited graphs in <em>graph6</em> format.</p>
+<pre><code>#!/bin/bash
+
+while read
+do
+ s="
+ load(graphs)$
+ g: graph6_decode(\"$REPLY\")$
+ graph_size(g);
+ "
+ maxima --very-quiet --batch-string="$s"\
+  | tail -n 1\
+  | tr -d ' \t\r\f[]'\
+  | tr ',' '\n'
+done</code></pre>
+<p>Unfortunately, this approach is incredibly slow for at least two obvious reasons. The first is that for every graph we run a new instance of Maxima. The second is that each of these many instances of Maxima has to import the <em>graphs</em> library.</p>
+<p>A different approach, which is much faster, is to read the entire list of graphs as a string, convert that string into the string representation of a Maxima list of strings and hand that to one instance of Maxima to process. The following listing does just that.</p>
+<pre><code>#!/bin/bash
+
+read g6raw
+g6proc=$(echo $g6raw |
+         awk '{  print "\"" $1 "\"" "," }' RS=' ' ORS=' ' |
+         sed '$s/. $//')
+g6list="["${g6proc}"]"
+
+s="
+load(graphs)$
+
+g6list: $g6list$
+glist: map(graph6_decode, g6list)$
+l:map(graph_size, glist)$
+printf(true, \"~{~a,~}\", l);
+"
+
+maxima -q --very-quiet --batch-string="$s"\
+ | tail -n 1\
+ | tr -d ' \t\r\f'\
+ | tr ',' '\n'\
+ | head -n -1</code></pre>
+<p>This approach presents some new problems. Firstly, because we read the entire output of <em>geng</em> into one string we have to use <code>echo geng</code>. A worse problem is that we quickly run out of memory, even for very small values of the graph order. Nevertheless, for the sake of experimentation, we continue with this approach for the Moore graphs application. In the worst case it will make a reasonable base for future development.</p>
+</section>
+<section id="filtering-moore-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-moore-graphs">Filtering Moore Graphs</h2>
+<p>Assuming that input is a string of whitespace-delimited graphs in <em>graph6</em> format we start by building a Bash string representing a Maxima list of the same <em>graph6</em> format strings.</p>
+<pre><code>read g6raw
+g6proc=$(echo $g6raw |
+         awk '{  print "\"" $1 "\"" "," }' RS=' ' ORS=' ' |
+         sed '$s/. $//')
+g6list="["${g6proc}"]"</code></pre>
+<p>The <em>AWK</em> program here surrounds all strings with double-quotes and adds a separating comma. The <em>Sed</em> hack removes the last comma and the final assignment statement puts the entire list of strings into a string surrounded by a pair of square braces, the Maxima syntax for a list.</p>
+<p>Now we have the data in a format that can be passed to Maxima we build the entire Maxima program as a Bash string. The core of the program is a function <code>moore1(G)</code> which decides whether the graph <code>G</code> is a Moore graph or not.</p>
+<pre><code>moore1(G):=
+ (
+  K: max_degree(G)[1],
+  k: min_degree(G)[1],
+  d: diameter(G),
+  g: girth(G),
+  is_connected(G) and is(g = 2*d + 1 and k = K)
+ )$</code></pre>
+<p>Here <code>max_degree</code>, <code>min_degree</code>, <code>diameter</code>, <code>girth</code> and <code>is_connected</code> are all functions from the Maxima <em>graphs</em> library. The <code>is</code> function is one of the core Maxima functions for Boolean predicate testing.</p>
+<p>The function <code>moore1(G)</code> has no return statement because Maxima functions which are made up from a simple list of statements in this way return the last evaluated value by default.</p>
+<p>For comparision, although not discussed further here, we also implemented another two functions for testing whether a graph is a Moore graph or not. These are based on the remaining two ways of choosing a pair of conditions from the list above.</p>
+<pre><code>moore2(g):=
+ (
+  k: max_degree(g)[1],
+  d: diameter(g),
+  expected_order: 1 + k*(((k - 1)^d - 1)/(k - 2)),
+  is_connected(G) and is(graph_order(g) = expected_order)
+ )$
+
+moore3(g):=
+ (
+  k: min_degree(g)[1],
+  d: (girth(g) - 1)/2,
+  expected_order: 1 + k*(((k - 1)^d - 1)/(k - 2)),
+  is(graph_order(g) = expected_order)
+ )$</code></pre>
+<p>With the testing function implemented we turn to the <em>graphs</em> library and its <code>graph6_encode</code> and <code>graph6_decode</code> functions to convert the incoming data and the outgoing results.</p>
+<pre><code>g6list: $g6list$
+glist: map(graph6_decode, g6list)$
+moore_graphs: sublist(glist, moore1)$
+map(graph6_encode, moore_graphs);</code></pre>
+<p>All of the above code is the content of a Bash string which is handed to Maxima for batch processing. This approach makes it easy, e.g <code>g6list: $g6list</code> to pass data from Bash to Maxima. After the Maxima program has finished we need to use <code>tail</code> and <code>tr</code> to clean up the output so that we only see the graph data and none of the auxilliary output of Maxima.</p>
+<pre><code>maxima --very-quiet --batch-string="$s"\
+  | tail -n 1\
+  | tr -d ' \t\r\f[]'\
+  | tr ',' '\n'</code></pre>
+<p>In its present state the final script correctly identifies the Moore graphs on at most six vertices. With some improvement we hope to extend this to graphs of order at most nine.</p>
+</section>
+<section id="references" class="level2">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bannaiFiniteMooreGraphs1973" class="csl-entry" role="listitem">
+Bannai, Eiichi, and Tatsuro Ito. 1973. <span>“On Finite Moore Graphs.”</span> <em>Journal of the Faculty of Science, the University of Tokyo. Sect. 1 A, Mathematics = 東京大学理学部紀要. 第1類a, 数学</em> 20 (2): 191–208. https://doi.org/<a href="https://doi.org/10.15083/00039786">https://doi.org/10.15083/00039786</a>.
+</div>
+<div id="ref-cameronCombinatoricsTopicsTechniques1994" class="csl-entry" role="listitem">
+Cameron, Peter J. 1994. <span>“Combinatorics: Topics, Techniques, Algorithms.”</span> Higher Education from Cambridge University Press. Cambridge University Press. October 6, 1994. <a href="https://doi.org/10.1017/CBO9780511803888">https://doi.org/10.1017/CBO9780511803888</a>.
+</div>
+<div id="ref-damerellMooreGraphs1973" class="csl-entry" role="listitem">
+Damerell, R. M. 1973. <span>“On Moore Graphs.”</span> <em>Mathematical Proceedings of the Cambridge Philosophical Society</em> 74 (2): 227–36. <a href="https://doi.org/10.1017/S0305004100048015">https://doi.org/10.1017/S0305004100048015</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/MHenderson\.github\.io\/mjhmathblog\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
