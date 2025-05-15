@@ -1,0 +1,21 @@
+project:
+  type: website
+  preview:
+    port: 6325
+
+website:
+  title: "mjhmathblog"
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/MHenderson
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+
+execute:
+  freeze: auto
+
