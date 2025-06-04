@@ -1,27 +1,21 @@
 ---
 title: Plane Drawings of Lobsters
 author: Matthew Henderson
-date: '2014-04-25'
-slug: plane-drawings-of-lobsters
+date: 2014-04-25
+date-modified: last-modified
 categories:
   - graph-theory
-tags:
   - graph-drawing
   - python
   - networkx
   - gephi
 ---
 
-In this post we show how to use
+In this post we demonstrate how to use
 [Gephi](https://gephi.org/)
 to find a nice drawing of a graph with hundreds of vertices.
 
-A nice drawing here means one with few edge crossings whose nodes are evenly distributed over a fixed area and has a small number of different edge lengths.
-
-Ideally we would like to find a *reproducible* method for drawing graphs which always produces a nice drawing in the above sense.
-The method demonstrated below does not entirely achieve this but might be a useful step in the right direction.
-
-In future posts we hope to develop these methods by using scriptable tools and other improved techniques to enhance the reproducibility of this method.
+A nice drawing here is one with few edge crossings whose nodes are evenly distributed over a fixed area and has a small number of different edge lengths.
 
 # Lobster graphs
 
@@ -38,15 +32,15 @@ where
 > a caterpillar is a tree such that removal of its [endpoints](http://mathworld.wolfram.com/Endpoint.html)
 > leaves a [path graph](http://mathworld.wolfram.com/PathGraph.html).
 
-![](img/small.png)
+![](img/small.png){fig-align="center"}
 
 Lobsters, being trees, are planar graphs.
 So plane drawings of small lobsters, like the one above, can be achieved easily.
-Notice that although this drawing is not especially elegant one it does have the dual benefit of making both the planarity and the lobsterity of the graph clear.
+Although this drawing is not particularly elegant one it does possess the dual benefit of highlighting both the planarity and the lobsterity of the graph.
 
 For comparison, consider the following drawing of a large lobster graph.
 
-![](img/lobster.svg)
+![](img/lobster.svg){fig-align="center"}
 
 In this drawing neither the planarity nor the lobsterity of the graph are apparent.
 
@@ -76,10 +70,10 @@ force-directed algorithm available alongside a layout method called
 
 These two layout methods, although both built on force-directed foundations, produce wildly different layouts with the same lobster graph input.
 
-Beginning with random placement of nodes, the Fruchterman-Reingold algorithm implementation in Gephi produces a layout having uniform distribution of nodes across a disk.
+Beginning with random placement of nodes, the Fruchterman-Reingold algorithm in Gephi produces a layout having uniform distribution of nodes across a disk.
 Albeit one having very many edge-crossings.
 
-![](img/lobster2.svg)
+![](img/lobster2.svg){fig-align="center"}
 
 This is a well-known problem with force-directed methods.
 The algorithm has probably discovered a local minimum.
@@ -87,7 +81,7 @@ Unfortunately this local minimum is far from the global minimum.
 
 The Force-Atlas algorithm, on the other hand, creates a layout which has few crossings but without the nice node distribution of the Fruchterman-Reingold layout.
 
-![](img/lobster3.svg)
+![](img/lobster3.svg){fig-align="center"}
 
 Gephi makes it easy to experiment with combining methods to produce a layout which has the benefits of both.
 
@@ -95,8 +89,9 @@ Gephi makes it easy to experiment with combining methods to produce a layout whi
 
 First using the Force-Atlas method to find a nearly plane drawing and then using the Fruchterman-Reingold algorithm on the resulting drawing produces a new drawing that is both nearly planar and has evenly distributed nodes with relatively few different edge lengths.
 
-![](img/lobster4.svg)
+![](img/lobster4.svg){fig-align="center"}
 
 Another benefit of Gephi, not illustrated here, is that some of the layout methods allow for interaction during execution.
 This means that, where there are edge-crossings we can manually move vertices around a little bit to help eliminate them.
 So a layout like the one shown, which has few edge crossings can probably be improved to a plane drawing with a little manual interaction.
+
