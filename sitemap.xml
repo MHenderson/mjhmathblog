@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-13-greedy-vertex-colouring/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.757Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-08-29-chromatic-indices-of-small-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.769Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-08-08-colouring-small-graphs-update/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.767Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-04-vertex-colouring-by-recursive-removal-of-independent-sets-of-vertices/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.762Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-25-colouring-small-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.766Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-05-30-drawing-coloured-queen-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.755Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-09-12-more-on-moore-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.770Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-20-strategies-for-greedy-vertex-colouring/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-08-22-small-moore-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.769Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-06-processing-graph-streams/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.755Z</lastmod>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-10-17-euler-paths/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.161Z</lastmod>
   </url>
   <url>
     <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-08-15-colouring-small-regular-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.768Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.744Z</lastmod>
+    <lastmod>2025-06-05T07:02:34.153Z</lastmod>
   </url>
   <url>
     <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-04-25-plane-drawings-of-lobsters/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.746Z</lastmod>
+    <lastmod>2025-06-05T07:02:34.129Z</lastmod>
   </url>
   <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-05-09-lombardi-drawings/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.750Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-11-chromatic-polynomials/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.763Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-27-improved-greedy-colouring-of-small-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.761Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2023-05-04-generating-examples-of-maximal-room-squares-in-r/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.778Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-09-26-greedy-edge-colouring-of-small-graphs/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.776Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-18-a-chromatic-number-program/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.764Z</lastmod>
-  </url>
-  <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-05-23-introduction-to-greedy-colouring/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.753Z</lastmod>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-13-greedy-vertex-colouring/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.142Z</lastmod>
   </url>
   <url>
     <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-05-02-basic-graph-drawing/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.749Z</lastmod>
+    <lastmod>2025-06-05T07:02:34.133Z</lastmod>
   </url>
   <url>
-    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-10-17-euler-paths/index.html</loc>
-    <lastmod>2025-05-15T18:12:14.777Z</lastmod>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-05-30-drawing-coloured-queen-graphs/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.139Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-08-22-small-moore-graphs/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.153Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2023-05-04-generating-examples-of-maximal-room-squares-in-r/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.163Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-25-colouring-small-graphs/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.150Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-05-23-introduction-to-greedy-colouring/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.137Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-05-09-lombardi-drawings/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.133Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.128Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-27-improved-greedy-colouring-of-small-graphs/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.145Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-06-processing-graph-streams/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.139Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-09-26-greedy-edge-colouring-of-small-graphs/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-08-08-colouring-small-graphs-update/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.151Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-09-12-more-on-moore-graphs/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.154Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-08-29-chromatic-indices-of-small-graphs/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.154Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-04-vertex-colouring-by-recursive-removal-of-independent-sets-of-vertices/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.146Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-11-chromatic-polynomials/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.147Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-06-20-strategies-for-greedy-vertex-colouring/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.144Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MHenderson.github.io/mjhmathblog/posts/2014-07-18-a-chromatic-number-program/index.html</loc>
+    <lastmod>2025-06-05T07:02:34.148Z</lastmod>
   </url>
 </urlset>

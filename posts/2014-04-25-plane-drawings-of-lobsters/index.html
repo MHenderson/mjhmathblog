@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-dde8d7229bfee0f8bb5efd37f0f9ae1e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-905433ffa22618bb005779f2b23c5ce0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -110,6 +110,10 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">Plane Drawings of Lobsters</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">graph-theory</div>
+                <div class="quarto-category">graph-drawing</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">networkx</div>
+                <div class="quarto-category">gephi</div>
               </div>
                   </div>
   </div>
@@ -131,6 +135,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">June 5, 2025</p>
+      </div>
+    </div>
       
     </div>
     
@@ -146,10 +156,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>In this post we show how to use <a href="https://gephi.org/">Gephi</a> to find a nice drawing of a graph with hundreds of vertices.</p>
-<p>A nice drawing here means one with few edge crossings whose nodes are evenly distributed over a fixed area and has a small number of different edge lengths.</p>
-<p>Ideally we would like to find a <em>reproducible</em> method for drawing graphs which always produces a nice drawing in the above sense. The method demonstrated below does not entirely achieve this but might be a useful step in the right direction.</p>
-<p>In future posts we hope to develop these methods by using scriptable tools and other improved techniques to enhance the reproducibility of this method.</p>
+<p>In this post we demonstrate how to use <a href="https://gephi.org/">Gephi</a> to find a nice drawing of a graph with hundreds of vertices.</p>
+<p>A nice drawing here is one with few edge crossings whose nodes are evenly distributed over a fixed area and has a small number of different edge lengths.</p>
 <section id="lobster-graphs" class="level1">
 <h1>Lobster graphs</h1>
 <p>From <a href="http://mathworld.wolfram.com">MathWorld</a>:</p>
@@ -160,10 +168,18 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>a caterpillar is a tree such that removal of its <a href="http://mathworld.wolfram.com/Endpoint.html">endpoints</a> leaves a <a href="http://mathworld.wolfram.com/PathGraph.html">path graph</a>.</p>
 </blockquote>
-<p><img src="img/small.png" class="img-fluid"></p>
-<p>Lobsters, being trees, are planar graphs. So plane drawings of small lobsters, like the one above, can be achieved easily. Notice that although this drawing is not especially elegant one it does have the dual benefit of making both the planarity and the lobsterity of the graph clear.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/small.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Lobsters, being trees, are planar graphs. So plane drawings of small lobsters, like the one above, can be achieved easily. Although this drawing is not particularly elegant one it does possess the dual benefit of highlighting both the planarity and the lobsterity of the graph.</p>
 <p>For comparison, consider the following drawing of a large lobster graph.</p>
-<p><img src="img/lobster.svg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/lobster.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>In this drawing neither the planarity nor the lobsterity of the graph are apparent.</p>
 <p>This lobster graph has 287 vertices and, being a tree, 286 edges was generated in Python using NetworkX.</p>
 <p>The following command creates a file in Graph Exchange Format (GEXF).</p>
@@ -176,17 +192,29 @@ ul.task-list li input[type="checkbox"] {
 <p>The type of drawing we are looking for, one with as few edge crossings and different edge lengths as possible is the kind of drawing that <a href="http://en.wikipedia.org/wiki/Force-directed_graph_drawing">force-directed</a> algorithms are designed to produce. Force-directed drawing algorithms use simulations of forces between nodes to decide node placements. Electrical forces have the effect of making non-adjacent nodes move further apart and spring forces between adjacent nodes have the effect of reducing variability of edge lengths.</p>
 <p>Gephi makes the standard <a href="https://wiki.gephi.org/index.php/Fruchterman-Reingold">Fruchterman-Reingold</a> force-directed algorithm available alongside a layout method called <a href="https://gephi.org/2011/forceatlas2-the-new-version-of-our-home-brew-layout/">Force-Atlas</a>.</p>
 <p>These two layout methods, although both built on force-directed foundations, produce wildly different layouts with the same lobster graph input.</p>
-<p>Beginning with random placement of nodes, the Fruchterman-Reingold algorithm implementation in Gephi produces a layout having uniform distribution of nodes across a disk. Albeit one having very many edge-crossings.</p>
-<p><img src="img/lobster2.svg" class="img-fluid"></p>
+<p>Beginning with random placement of nodes, the Fruchterman-Reingold algorithm in Gephi produces a layout having uniform distribution of nodes across a disk. Albeit one having very many edge-crossings.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/lobster2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>This is a well-known problem with force-directed methods. The algorithm has probably discovered a local minimum. Unfortunately this local minimum is far from the global minimum.</p>
 <p>The Force-Atlas algorithm, on the other hand, creates a layout which has few crossings but without the nice node distribution of the Fruchterman-Reingold layout.</p>
-<p><img src="img/lobster3.svg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/lobster3.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>Gephi makes it easy to experiment with combining methods to produce a layout which has the benefits of both.</p>
 </section>
 <section id="combining-force-atlas-and-fruchterman-reingold-layout-algorithms" class="level1">
 <h1>Combining Force-Atlas and Fruchterman-Reingold Layout Algorithms</h1>
 <p>First using the Force-Atlas method to find a nearly plane drawing and then using the Fruchterman-Reingold algorithm on the resulting drawing produces a new drawing that is both nearly planar and has evenly distributed nodes with relatively few different edge lengths.</p>
-<p><img src="img/lobster4.svg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/lobster4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>Another benefit of Gephi, not illustrated here, is that some of the layout methods allow for interaction during execution. This means that, where there are edge-crossings we can manually move vertices around a little bit to help eliminate them. So a layout like the one shown, which has few edge crossings can probably be improved to a plane drawing with a little manual interaction.</p>
 
 
