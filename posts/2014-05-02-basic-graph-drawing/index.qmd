@@ -1,10 +1,10 @@
 ---
 title: Basic Graph Drawing
 author: Matthew Henderson
-date: '2014-05-02'
+date: 2014-05-02
+date-modified: last-modified
 categories:
   - graph-theory
-tags:
   - graph-drawing
   - python
   - networkx
@@ -42,7 +42,7 @@ By passing these coordinates to the ``draw`` function, the Petersen graph will b
 nx.draw(G, nx.circular_layout(G))
 ```
 
-![](img/networkx-drawing-notebook_9_0.png)
+![](img/networkx-drawing-notebook_9_0.png){fig-align="center"}
 
 Instead of using the ``draw`` function in conjunction with the ``circular_layout`` function we can use the ``draw_circular`` convenience function.
 
@@ -53,7 +53,7 @@ Keyword parameters can be specified to customise things like node colours, edge 
 nx.draw_circular(G, with_labels=False, node_color='black')
 ```
 
-![](img/networkx-drawing-notebook_11_0.png)
+![](img/networkx-drawing-notebook_11_0.png){fig-align="center"}
 
 To enhance reusability across multiple graphs, consolidating all configuration options into a dictionary and subsequently passing this dictionary as a parameter to the relevant layout function proves advantageous.
 This approach streamlines the process of managing and applying configuration settings for various graphs efficiently.
@@ -69,7 +69,7 @@ options = {
 nx.draw_circular(G, **options)
 ```
 
-![](img/networkx-drawing-notebook_14_0.png)
+![](img/networkx-drawing-notebook_14_0.png){fig-align="center"}
 
 This drawing is not easily recognised as a drawing of the Petersen graph.
 A more familiar drawing shows one of the five cycles in the shape of a regular pentagon with another five cycle as a star in the interior joined to the outer cycle by five spokes.
@@ -84,7 +84,7 @@ Figuring out which vertices lie in the outer shell and which are in the inner sh
 nx.draw_shell(G, nlist=[range(5, 10), range(5)], **options)
 ```
 
-![](img/networkx-drawing-notebook_17_0.png)
+![](img/networkx-drawing-notebook_17_0.png){fig-align="center"}
 
 NetworkX has the following layout algorithms.
 
@@ -112,7 +112,7 @@ plt.subplot(224)
 nx.draw_spring(G, **options)
 ```
 
-![](img/networkx-drawing-notebook_19_0.png)
+![](img/networkx-drawing-notebook_19_0.png){fig-align="center"}
 
 The ``plt.subplot`` command takes an integer argument whose first two digits are interpreted as a number of rows and columns in a rectangular grid layout.
 The third argument is interpreted as the position of the current figure in the grid.
@@ -139,7 +139,7 @@ G = nx.dodecahedral_graph()
 nx.draw_shell(G, nlist = [[2,3,4,5,6],[8,1,0,19,18,17,16,15,14,7],[9,10,11,12,13]], **options_1)
 ```
 
-![](img/networkx-drawing-notebook_25_0.png)
+![](img/networkx-drawing-notebook_25_0.png){fig-align="center"}
 
 # Drawing Graphs with Many Nodes
 
@@ -163,7 +163,7 @@ G = nx.barabasi_albert_graph(100, 3)
 nx.draw_circular(G, **options_2)
 ```
 
-![](img/networkx-drawing-notebook_31_0.png)
+![](img/networkx-drawing-notebook_31_0.png){fig-align="center"}
 
 # Drawing Graphs with Many Edges
 
@@ -185,7 +185,7 @@ G = nx.complete_bipartite_graph(25, 26)
 nx.draw_shell(G, nlist=[range(0, 25), range(25, 51)], **options_3)
 ```
 
-![](img/networkx-drawing-notebook_35_0.png)
+![](img/networkx-drawing-notebook_35_0.png){fig-align="center"}
 
 Admittedly, this drawing conveys little information about the graph.
 It is hard even to see which nodes in the inner shell are connected to nodes in the outer shell or if there are any connections between nodes in the inner shell.
@@ -203,7 +203,7 @@ G = nx.random_lobster(100, 0.9, 0.9)
 nx.draw_spring(G, iterations=10000, **options_2)
 ```
 
-![](img/networkx-drawing-notebook_39_0.png)
+![](img/networkx-drawing-notebook_39_0.png){fig-align="center"}
 
 In a
 [earlier post](/blog/plane-drawings-of-lobsters/)
@@ -222,7 +222,7 @@ NetworkX loads the graph as a directed graph and will draw directed edges with a
 nx.draw(G, pos, arrows=False, **options_2)
 ```
 
-![](img/networkx-drawing-notebook_43_0.png)
+![](img/networkx-drawing-notebook_43_0.png){fig-align="center"}
 
 This drawing is an improvement on the previous one.
 The chosen layout almost succeeds in conveying both the planarity and lobsterity of the graph.

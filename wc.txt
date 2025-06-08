@@ -1,5 +1,5 @@
     97    586   4543 posts/2014-04-25-plane-drawings-of-lobsters/index.qmd
-   234   1223   8846 posts/2014-05-02-basic-graph-drawing/index.qmd
+   234   1224   9067 posts/2014-05-02-basic-graph-drawing/index.qmd
    267   1558  10887 posts/2014-05-09-lombardi-drawings/index.qmd
    303   2128  13704 posts/2014-05-23-introduction-to-greedy-colouring/index.qmd
    170   1009   6921 posts/2014-05-30-drawing-coloured-queen-graphs/index.qmd
@@ -19,4 +19,4 @@
    325   1878  11449 posts/2014-09-26-greedy-edge-colouring-of-small-graphs/index.qmd
    237   1341   9513 posts/2014-10-17-euler-paths/index.qmd
    151    742   5309 posts/2023-05-04-generating-examples-of-maximal-room-squares-in-r/index.qmd
-  4999  28163 192119 total
+  4999  28164 192340 total
