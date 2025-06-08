@@ -145,6 +145,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">Basic Graph Drawing</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">graph-theory</div>
+                <div class="quarto-category">graph-drawing</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">networkx</div>
               </div>
                   </div>
   </div>
@@ -166,6 +169,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">June 8, 2025</p>
+      </div>
+    </div>
       
     </div>
     
@@ -192,11 +201,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.petersen_graph()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To visualize the Petersen graph with a circular layout, you can employ the <code>draw</code> function by providing it with vertex coordinates generated from the <code>circular_layout</code> function. This layout function takes the graph as its parameter and outputs the coordinates of the vertices, arranging them in a circular pattern. By passing these coordinates to the <code>draw</code> function, the Petersen graph will be rendered in a circular layout, resulting in a visually appealing representation.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nx.draw(G, nx.circular_layout(G))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_9_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_9_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>Instead of using the <code>draw</code> function in conjunction with the <code>circular_layout</code> function we can use the <code>draw_circular</code> convenience function.</p>
 <p>The <code>draw</code> function and all of the <code>draw_</code> functions can be configured to produce graph drawings with different visual properties. Keyword parameters can be specified to customise things like node colours, edge widths and whether the graph is displayed with labels or not.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(G, with_labels<span class="op">=</span><span class="va">False</span>, node_color<span class="op">=</span><span class="st">'black'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_11_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_11_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>To enhance reusability across multiple graphs, consolidating all configuration options into a dictionary and subsequently passing this dictionary as a parameter to the relevant layout function proves advantageous. This approach streamlines the process of managing and applying configuration settings for various graphs efficiently.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="st">'with_labels'</span>: <span class="va">False</span>,</span>
@@ -206,11 +223,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(G, <span class="op">**</span>options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_14_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_14_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>This drawing is not easily recognised as a drawing of the Petersen graph. A more familiar drawing shows one of the five cycles in the shape of a regular pentagon with another five cycle as a star in the interior joined to the outer cycle by five spokes. To achieve this layout in NetworkX use the shell layout algorithm.</p>
 <p>The <code>draw_shell</code> function takes an optional <code>nlist</code> keyword argument. The elements of the list are lists of vertices. The vertices will be arranged in concentric shells according to the elements of these lists. Figuring out which vertices lie in the outer shell and which are in the inner shell, along with their respective orderings, requires a little experimentation.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nx.draw_shell(G, nlist<span class="op">=</span>[<span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="bu">range</span>(<span class="dv">5</span>)], <span class="op">**</span>options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_17_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_17_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>NetworkX has the following layout algorithms.</p>
 <ul>
 <li>Circular</li>
@@ -232,7 +257,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">224</span>)</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>nx.draw_spring(G, <span class="op">**</span>options)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_19_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_19_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>The <code>plt.subplot</code> command takes an integer argument whose first two digits are interpreted as a number of rows and columns in a rectangular grid layout. The third argument is interpreted as the position of the current figure in the grid. Grid numbering starts in the top-left corner and proceeds right and down to the bottom-right corner.</p>
 </section>
 <section id="drawing-graphs-with-more-nodes" class="level1">
@@ -247,7 +276,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As with the earlier drawing of the Petersen graph the nodes for different layers of the drawing of the dodecahedral graph below were found through experimentation.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.dodecahedral_graph()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>nx.draw_shell(G, nlist <span class="op">=</span> [[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">19</span>,<span class="dv">18</span>,<span class="dv">17</span>,<span class="dv">16</span>,<span class="dv">15</span>,<span class="dv">14</span>,<span class="dv">7</span>],[<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>]], <span class="op">**</span>options_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_25_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_25_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 <section id="drawing-graphs-with-many-nodes" class="level1">
 <h1>Drawing Graphs with Many Nodes</h1>
@@ -261,7 +294,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.barabasi_albert_graph(<span class="dv">100</span>, <span class="dv">3</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(G, <span class="op">**</span>options_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_31_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_31_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 <section id="drawing-graphs-with-many-edges" class="level1">
 <h1>Drawing Graphs with Many Edges</h1>
@@ -277,7 +314,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.complete_bipartite_graph(<span class="dv">25</span>, <span class="dv">26</span>)</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>nx.draw_shell(G, nlist<span class="op">=</span>[<span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">25</span>), <span class="bu">range</span>(<span class="dv">25</span>, <span class="dv">51</span>)], <span class="op">**</span>options_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_35_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_35_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>Admittedly, this drawing conveys little information about the graph. It is hard even to see which nodes in the inner shell are connected to nodes in the outer shell or if there are any connections between nodes in the inner shell. About the only information we can interpret is that nodes in the outer shell appear not to be joined to other vertices in the outer shell. But it serves as an example of the kind of issues that can arise when drawing graphs with many edges.</p>
 </section>
 <section id="importing-layouts-from-gephi" class="level1">
@@ -285,13 +326,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Naturally, some of the problems encountered above are due to poorly chosen layouts. Better layouts can reduce problems of identifying nodes and edges. Even better layouts can help to highlight structural properties and symmetries of graphs.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.random_lobster(<span class="dv">100</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>nx.draw_spring(G, iterations<span class="op">=</span><span class="dv">10000</span>, <span class="op">**</span>options_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_39_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_39_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>In a <a href="../../blog/plane-drawings-of-lobsters/">earlier post</a> we talked about how to use Gephi to find nice layouts of large lobster graphs. As an alternative to using NetworkX’s layout algorithms we can export our graph, use Gephi to find a suitable layout and then import the graph data back (now augmented with coordinate information) and use the raw drawing ability of NetworkX to render the graph with this layout.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.read_graphml(<span class="st">'lobster.graphml'</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> <span class="bu">dict</span>([(v,(G.node[v][<span class="st">'x'</span>], G.node[v][<span class="st">'y'</span>])) <span class="cf">for</span> v <span class="kw">in</span> G.nodes()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>NetworkX loads the graph as a directed graph and will draw directed edges with arrows unless we set the <code>arrows</code> keyword argument to <code>False</code>.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nx.draw(G, pos, arrows<span class="op">=</span><span class="va">False</span>, <span class="op">**</span>options_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/networkx-drawing-notebook_43_0.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/networkx-drawing-notebook_43_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>This drawing is an improvement on the previous one. The chosen layout almost succeeds in conveying both the planarity and lobsterity of the graph. With a little manual adjustment we could probably eliminate all edge-crossings. Other nice properties of this layout are that there are only a few different edge lengths and nodes are evenly distributed over a symmetrical area.</p>
 </section>
 <section id="code" class="level1">
