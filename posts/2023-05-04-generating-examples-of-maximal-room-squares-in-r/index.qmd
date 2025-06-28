@@ -1,19 +1,14 @@
 ---
 title: Generating Examples of Maximal Room Squares in R
 author: Matthew Henderson
-date: '2023-05-04'
-slug: [maximal-room-squares]
+date: 2023-05-04
 categories:
   - combinatorics
-tags: [room-squares]
-subtitle: ''
+  - room-squares
 excerpt: 'A partial Room square is maximal if no further pair of elements can be
     placed into any unoccupied cell without violating the conditions that define a
     partial Room square. This blog posts describes two approaches to creating
     maximal partial Room squares in R.'
-draft: false
-series: ~
-layout: single
 references:
 - id: meszkaMaximalPartialRoom2021
   abstract: A partial Room square is maximal if no further pair of elements can be
@@ -44,31 +39,6 @@ references:
   type: article-journal
   URL: https://onlinelibrary.wiley.com/doi/abs/10.1002/jcd.21777
   volume: '29'
-- id: hendersonMHendersonMaximalroomsquares2023
-  abstract: >-
-    <strong>Full Changelog</strong>:
-    https://github.com/MHenderson/maximal-room-squares/commits/0.1.0
-  accessed:
-    - year: 2023
-      month: 5
-      day: 4
-  author:
-    - family: Henderson
-      given: Matthew
-  citation-key: hendersonMHendersonMaximalroomsquares2023
-  DOI: 10.5281/ZENODO.7895562
-  issued:
-    - year: 2023
-      month: 5
-      day: 4
-  license: Open Access
-  publisher: Zenodo
-  source: DOI.org (Datacite)
-  title: 'MHenderson/maximal-room-squares: 0.1.0'
-  title-short: MHenderson/maximal-room-squares
-  type: software
-  URL: https://zenodo.org/record/7895562
-  version: 0.1.0
 ---
 
 A **Room square** of order $n$ and side $n − 1$ on an $n$‐element set $S$ is an
@@ -95,11 +65,6 @@ The first method involves iterating through the cells in a specific order and pl
 
 The second method involves iterating through the set of all unordered pairs and placing the next available pair into the first cell that satisfies the conditions of being a partial Room square without violating any constraints. This process is known as `greedy2`.
 
-Both `greedy1` and `greedy2` have been implemented in R and are available at
-[the Github repository](https://github.com/MHenderson/maximal-room-squares)
-(@hendersonMHendersonMaximalroomsquares2023)
-accompanying this blog post.
-
 ## greedy1
 
 The algorithm `greedy1` visits each cell in a predetermined order and places the first available pair of symbols into the cell, provided that doing so does not violate the conditions of creating a partial Room square.
@@ -109,7 +74,7 @@ R <- greedy1(6)
 plot_room_square_labs(R)
 ```
 
-![](greedy1_example_plot-1.png)
+![](https://mhenderson.github.io/maximal-room-squares/plots/greedy1-example-plot.png)
 
 In this plot, the colors indicate the sequence in which the cells were filled. Specifically, lighter colors represent cells that were filled earlier in the process, while darker colors represent cells that were filled later.
 
@@ -121,9 +86,9 @@ is_maximal_proom(R)
 Here are a few more examples of maximal partial Room squares created
 by `greedy1`.
 
-![](greedy1_examples_1-1.png)<!-- -->
+![](https://mhenderson.github.io/maximal-room-squares/plots/greedy1-examples1-plot.png)
 
-![](greedy1_examples_2-1.png)<!-- -->
+![](https://mhenderson.github.io/maximal-room-squares/plots/greedy1-examples2-plot.png)
 
 ## greedy2
 
@@ -134,7 +99,7 @@ R <- greedy2(6)
 plot_room_square_labs(R)
 ```
 
-![](greedy2_example_plot-1.png)
+![](https://mhenderson.github.io/maximal-room-squares/plots/greedy2-example-plot.png)
 
 ```r
 is_maximal_proom(R)
@@ -144,8 +109,13 @@ is_maximal_proom(R)
 Here are a few more examples of maximal partial Room squares created
 by `greedy2`.
 
-![](greedy2_examples_1-1.png)
+![](https://mhenderson.github.io/maximal-room-squares/plots/greedy2-examples1-plot.png)
 
-![](greedy2_examples_2-1.png)
+![](https://mhenderson.github.io/maximal-room-squares/plots/greedy2-examples2-plot.png)
+
+## Code
+
+[https://github.com/MHenderson/maximal-room-squares](https://github.com/MHenderson/maximal-room-squares)
 
 ## References
+
