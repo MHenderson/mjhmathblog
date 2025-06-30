@@ -18,5 +18,5 @@
    247   1192   8415 posts/2014-09-12-more-on-moore-graphs/index.qmd
    325   1878  11449 posts/2014-09-26-greedy-edge-colouring-of-small-graphs/index.qmd
    237   1341   9513 posts/2014-10-17-euler-paths/index.qmd
-   121    659   4767 posts/2023-05-04-generating-examples-of-maximal-room-squares-in-r/index.qmd
-  4970  28067 191703 total
+   122    661   4787 posts/2023-05-04-generating-examples-of-maximal-room-squares-in-r/index.qmd
+  4971  28069 191723 total
