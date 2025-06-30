@@ -9,6 +9,7 @@ excerpt: 'A partial Room square is maximal if no further pair of elements can be
     placed into any unoccupied cell without violating the conditions that define a
     partial Room square. This blog posts describes two approaches to creating
     maximal partial Room squares in R.'
+image: featured.png
 references:
 - id: meszkaMaximalPartialRoom2021
   abstract: A partial Room square is maximal if no further pair of elements can be
